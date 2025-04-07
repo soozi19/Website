@@ -1,0 +1,24 @@
+<div class="search-container">
+    <h2>Medicine Search</h2>
+    <input 
+      type="text" 
+      [(ngModel)]="searchTerm" 
+      (input)="searchMedicines()" 
+      placeholder="Type medicine name..."
+      class="search-input"
+    >
+    
+    <div *ngIf="isLoading" class="loading">Loading...</div>
+    
+    <div *ngIf="medicines.length > 0" class="results-container">
+      <ul class="results-list">
+        <li *ngFor="let medicine of medicines" class="result-item">
+          {{ medicine.name }}
+        </li>
+      </ul>
+    </div>
+    
+    <div *ngIf="searchTerm && medicines.length === 0 && !isLoading" class="no-results">
+      No medicines found
+    </div>
+  </div>
